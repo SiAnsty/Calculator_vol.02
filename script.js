@@ -6,17 +6,9 @@ let finish = false;
 const digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 const action = ['-', '+', 'X', '/', '+/-', '%'];
 
-const out = document.querySelector('.calc-screen p');
+const out = document.querySelector('.calc__screen p');
 
-// const clearAll  = () => {
-//     a = '';
-//     b = '';
-//     sign = '';
-//     finish = false;
-//     out.textContent = 0;
-// }
-
-document.querySelector('.ac').addEventListener('click', () => {
+document.querySelector('.btn__ac').addEventListener('click', () => {
     a = '';
     b = '';
     sign = '';
@@ -26,7 +18,7 @@ document.querySelector('.ac').addEventListener('click', () => {
 
 document.querySelector('.buttons').addEventListener('click', (event) => {
     if (!event.target.classList.contains('btn')) return;
-    if (event.target.classList.contains('ac')) return;
+    if (event.target.classList.contains('btn__ac')) return;
 
     out.textContent = '';
 
@@ -35,16 +27,19 @@ document.querySelector('.buttons').addEventListener('click', (event) => {
     if (digit.includes(key)) {
         if (b === '' && sign === '' ) {
             a += key;
-            out.textContent = a;
+            out.textContent = parseFloat(a);
+        console.log(a, b, sign);
+
         } 
         else if (a !== '' && b !== '' && finish) {
             b = key;
             finish = false;
-            out.textContent = b;
+            out.textContent = parseFloat(b);
+        console.log(a, b, sign);
         }
         else {
             b += key;
-            out.textContent = b;
+            out.textContent = parseFloat(b);
         }
         return;
     }
@@ -80,15 +75,22 @@ document.querySelector('.buttons').addEventListener('click', (event) => {
             case "+/-":
                 a = a * (-1);
                 break;
-            case "%":
-                a = a / 100;
-                break;
+            // case "%":
+            //     // a = a / 100;
+            //     if (sign === '+') {
+            //         a = a + ((a * b ) / 100);
+                    
+            //         return;
+            //     }
+            //     // b = ((a * b ) / 100);
+                
+            //     break;
         }
         finish = true;
         out.textContent = a;
         console.log(a, b, sign);
     }
-
+    
 });
 
 
