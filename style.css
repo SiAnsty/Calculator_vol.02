@@ -11,7 +11,7 @@
   box-shadow: 4px 4px 4px #4f4f4f;
 }
 
-.calc-screen {
+.calc__screen {
   height: 125px;
   padding: 10px;
   display: grid;
@@ -64,10 +64,10 @@ p {
   filter: brightness(90%);
 }
 
-.bg-grey {
+.btn_grey {
   background: #a6a6a6;
 }
 
-.bg-orange {
+.btn_orange {
   background: #ff9501;
 }
